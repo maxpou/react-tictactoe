@@ -47,7 +47,7 @@ export default class Game extends React.Component {
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start'
       return (
-        <li key={move}>
+        <li key={move} className={move === this.state.stepNumber ? 'game-info-current' : ''}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       )
