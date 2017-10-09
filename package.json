@@ -1,7 +1,8 @@
 {
   "name": "tictactoe",
   "version": "0.1.0",
-  "private": true,
+  "author": "Maxence POUTORD <maxence.poutord@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -11,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "eslint-config-standard-jsx": "^4.0.2",
