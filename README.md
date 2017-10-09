@@ -11,7 +11,7 @@
 * [Create React App](https://github.com/facebookincubator/create-react-app) *(the original seed)*
 
 
-## Commands
+## Commands
 
 ```bash
 npm start
