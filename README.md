@@ -8,6 +8,7 @@
 
 * [Facebook/React](https://reactjs.org/)
 * [Facebook/Jest](https://facebook.github.io/jest/)
+* [Airbnb/Enzyme](http://airbnb.io/enzyme/)
 * [Create React App](https://github.com/facebookincubator/create-react-app) *(the original seed)*
 
 

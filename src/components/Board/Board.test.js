@@ -1,15 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { shallow, mount } from 'enzyme'
 import Board from './Board'
 
-describe('Game.js', () => {
+describe('Board.js', () => {
   it('renders without crashing', () => {
-    const div = document.createElement('div')
     const squares = Array(9).fill(null)
-    ReactDOM.render(
-      <Board
-        squares={squares}
-      />,
-    div)
+    const wrapper = shallow(<Board squares={squares} />)
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should call a function on click', () => {
+    const squares = Array(9).fill(null)
+    const onClickEvent = jest.fn()
+    const wrapper = mount(<Board squares={squares} onClick={onClickEvent} />)
+    const button = wrapper.find('button.square').first()
+    button.simulate('click')
+
+    expect(onClickEvent).toBeCalledWith(0)
   })
 })
