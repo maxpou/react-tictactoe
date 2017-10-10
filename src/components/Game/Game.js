@@ -1,6 +1,6 @@
 import React from 'react'
-import Board from './Board'
-import calculateWinner from '../services/calculateWinner'
+import Board from '../Board/Board'
+import calculateWinner from '../../services/calculateWinner'
 import './Game.css'
 
 export default class Game extends React.Component {
