@@ -39,10 +39,19 @@ export default class Game extends React.Component {
     })
   }
 
+  getStatus () {
+    const current = this.state.history[this.state.stepNumber]
+    const winner = calculateWinner(current.squares)
+    if (winner) {
+      return 'Winner: ' + winner
+    }
+
+    return 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+  }
+
   render () {
     const history = this.state.history
     const current = history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares)
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start'
@@ -53,13 +62,6 @@ export default class Game extends React.Component {
       )
     })
 
-    let status
-    if (winner) {
-      status = 'Winner: ' + winner
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
-    }
-
     return (
       <div className='game'>
         <div className='game-board'>
@@ -69,7 +71,7 @@ export default class Game extends React.Component {
           />
         </div>
         <div className='game-info'>
-          <div>{status}</div>
+          <div>{this.getStatus(current.squares)}</div>
           <ol>{moves}</ol>
         </div>
       </div>
