@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game.js renders without crashing 1`] = `"<div class=\\"game\\"><div class=\\"game-board\\"><div><div class=\\"board-row\\"><button class=\\"square\\"></button><button class=\\"square\\"></button><button class=\\"square\\"></button></div><div class=\\"board-row\\"><button class=\\"square\\"></button><button class=\\"square\\"></button><button class=\\"square\\"></button></div><div class=\\"board-row\\"><button class=\\"square\\"></button><button class=\\"square\\"></button><button class=\\"square\\"></button></div></div></div><div class=\\"game-info\\"><div>Next player: X</div><ol><li class=\\"game-info-current\\"><button>Go to game start</button></li></ol></div></div>"`;
