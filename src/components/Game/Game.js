@@ -1,63 +1,18 @@
 import React from 'react'
 import Board from '../Board/Board'
-import calculateWinner from '../../services/calculateWinner'
+import DevTools from 'mobx-react-devtools'
+import { observer } from 'mobx-react'
 import './Game.css'
 
-export default class Game extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      history: [{
-        squares: Array(9).fill(null)
-      }],
-      stepNumber: 0,
-      xIsNext: true
-    }
-  }
-
-  handleClick (i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1)
-    const current = history[history.length - 1]
-    const squares = current.squares.slice()
-    if (calculateWinner(squares) || squares[i]) {
-      return
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O'
-    this.setState({
-      history: history.concat([{
-        squares: squares
-      }]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
-    })
-  }
-
-  jumpTo (step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0
-    })
-  }
-
-  getStatus () {
-    const current = this.state.history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares)
-    if (winner) {
-      return 'Winner: ' + winner
-    }
-
-    return 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
-  }
-
+class Game extends React.Component {
   render () {
-    const history = this.state.history
-    const current = history[this.state.stepNumber]
+    const {game} = this.props
 
-    const moves = history.map((step, move) => {
+    const moves = game.history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start'
       return (
-        <li key={move} className={move === this.state.stepNumber ? 'game-info-current' : ''}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li key={move} className={move === game.stepNumber ? 'game-info-current' : ''}>
+          <button onClick={() => game.jumpTo(move)}>{desc}</button>
         </li>
       )
     })
@@ -66,15 +21,18 @@ export default class Game extends React.Component {
       <div className='game'>
         <div className='game-board'>
           <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
+            squares={game.current.squares}
+            onClick={(i) => game.play(i)}
           />
         </div>
         <div className='game-info'>
-          <div>{this.getStatus(current.squares)}</div>
+          <div>{game.getStatus(game.current.squares)}</div>
           <ol>{moves}</ol>
         </div>
+        <DevTools />
       </div>
     )
   }
 }
+
+export default observer(Game)
