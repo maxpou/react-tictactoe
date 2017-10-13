@@ -8,6 +8,7 @@ Based [The REACT getting started](https://reactjs.org/tutorial/tutorial.html)...
 
 * [Facebook/React](https://reactjs.org/)
 * [MobX](https://mobx.js.org/index.html) *Simple, scalable state management*
+  * +[mobx-react-devtools](https://github.com/mobxjs/mobx-react-devtools)
 * [Facebook/Jest](https://facebook.github.io/jest/) *Delightful JavaScript Testing*
 * [Airbnb/Enzyme](http://airbnb.io/enzyme/) *Enzyme is a JavaScript Testing utility for React*
 * [Create React App](https://github.com/facebookincubator/create-react-app) *(the original seed)*

@@ -1,15 +1,16 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import Game from './Game'
+import GameModel from '../../model/GameModel'
 
 describe('Game.js', () => {
   it('renders without crashing', () => {
-    const wrapper = shallow(<Game />)
+    const wrapper = shallow(<Game game={new GameModel()} />)
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('Same player should not play 2 times in a row', () => {
-    const wrapper = mount(<Game />)
+    const wrapper = mount(<Game game={new GameModel()} />)
     const firstPlayer = wrapper.find('div.game-info').children().first().text()
     expect(firstPlayer).toEqual('Next player: X')
 
@@ -20,7 +21,7 @@ describe('Game.js', () => {
   })
 
   it('should declare a winner', () => {
-    const wrapper = mount(<Game />)
+    const wrapper = mount(<Game game={new GameModel()} />)
 
     const round1 = wrapper.find('button.square').at(0)
     round1.simulate('click')
@@ -34,7 +35,6 @@ describe('Game.js', () => {
     round5.simulate('click')
 
     const winnerDeclaration = wrapper.find('.game-info').children().first().text()
-    console.log(winnerDeclaration)
     expect(winnerDeclaration).toEqual('Winner: X')
   })
 })
