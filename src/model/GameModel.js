@@ -24,7 +24,6 @@ export default class GameModel {
       return
     }
     squares[squareNumber] = this.xIsNext ? 'X' : 'O'
-    //update state
     this.history = history.concat([{
       squares: squares
     }])
