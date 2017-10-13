@@ -32,8 +32,7 @@ export default class GameModel {
 
   // should be a computed
   getStatus () {
-    const current = this.history[this.stepNumber]
-    const winner = calculateWinner(current.squares)
+    const winner = calculateWinner(this.current.squares)
     if (winner) {
       return 'Winner: ' + winner
     }
