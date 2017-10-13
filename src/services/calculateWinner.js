@@ -1,4 +1,5 @@
-export default function calculateWinner (squares) {
+// @flow
+export default function calculateWinner (squares: Array<mixed>) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
